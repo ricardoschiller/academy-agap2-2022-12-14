@@ -8,50 +8,48 @@ using System.Threading.Tasks;
 
 namespace Agap2IT.Academy.SuperMarket.Dal
 {
-    public class GenericDao <T> where T : class
+    public class GenericDao
     {
-
-        public async Task Add(T obj)
+        public async Task Add<T>(T entity) where T : class
         {
             //queremos que o contexto dure pouco
             using (var context = new AcademyAgap213122022Context())
             {
-                context.Set<T>().Add(obj);
+                context.Set<T>().Add(entity);
                 await context.SaveChangesAsync();
             }
         }
 
-
-        public async Task Delete(int id)
+        public async Task Delete<T>(int id) where T : class
         {
             using (var context = new AcademyAgap213122022Context())
             {
-                var obj = context.Set<T>().Find(id);
-                context.Set<T>().Remove(obj);
+                var entity = context.Set<T>().Find(id);
+                context.Set<T>().Remove(entity);
                 await context.SaveChangesAsync();
             }
         }
 
-        public async Task Delete(T obj)
+        public async Task Delete<T>(T entity) where T : class
         {
             using (var context = new AcademyAgap213122022Context())
             {
-                context.Set<T>().Remove(obj);
+                context.Set<T>().Remove(entity);
                 await context.SaveChangesAsync();
             }
         }
 
-        public async Task Update(T obj)
+        public async Task Update<T>(T entity) where T : class
         {
             using (var context = new AcademyAgap213122022Context())
             {
-                context.Set<T>().Update(obj);
+                context.Set<T>().Update(entity);
                 await context.SaveChangesAsync();
             }
 
         }
 
-        public async Task<T> Get(int id)
+        public async Task<T> Get<T>(int id) where T : class
         {
             using (var context = new AcademyAgap213122022Context())
             {
@@ -60,14 +58,12 @@ namespace Agap2IT.Academy.SuperMarket.Dal
 
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<List<T>> GetAll<T>() where T : class
         {
             using (var context = new AcademyAgap213122022Context())
             {
                 return await context.Set<T>().ToListAsync();
             }
         }
-    
-
-}
+    }
 }
