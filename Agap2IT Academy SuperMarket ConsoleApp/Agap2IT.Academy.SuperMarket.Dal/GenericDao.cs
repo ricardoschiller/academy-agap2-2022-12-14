@@ -1,4 +1,5 @@
-﻿using Agap2IT.Academy.SuperMarket.Data.Models;
+﻿using Agap2IT.Academy.SuperMarket.Data.Interfaces;
+using Agap2IT.Academy.SuperMarket.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,17 @@ namespace Agap2IT.Academy.SuperMarket.Dal
             }
 
         }
+
+        public async Task<T> Get<T>(Guid uuid) where T : class, IReferencedEntity
+        {
+            using (var context = new AcademyAgap213122022Context())
+            {
+                return await context.Set<T>().Where(i => i.Uuid == uuid).SingleOrDefaultAsync();
+            }
+            
+        }
+
+
 
         public async Task<List<T>> GetAll<T>() where T : class
         {

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Agap2IT.Academy.SuperMarket.Data.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Agap2IT.Academy.SuperMarket.Data.Models;
 
-public partial class Client
+public partial class Client : IReferencedEntity
 {
     public int Id { get; set; }
 
