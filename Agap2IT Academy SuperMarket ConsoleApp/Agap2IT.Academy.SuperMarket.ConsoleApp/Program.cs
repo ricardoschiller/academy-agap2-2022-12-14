@@ -6,6 +6,14 @@ using Agap2IT.Academy.SuperMarket.Dal;
 Console.WriteLine("Hello, World!");
 
 
-var dao = new ClientsDao();
+
+var productsDao = new ProductsDao();
+
+var results = productsDao.GetProductsInClientShoppingCart(1);
+
+
+Console.ReadLine();
+
+
 
 
