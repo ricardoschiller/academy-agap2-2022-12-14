@@ -69,5 +69,22 @@ namespace Agap2IT.Academy.SuperMarket.Dal
         }
 
 
+        public async Task<List<Category>> GetCategoriesFromProductsInCart(int cartId)
+        {
+            using (var context = CreateContext())
+            {
+                var query = (from c in context.Carts
+                             join p in context.Products on cartId equals p.CategoryId
+                             join category in context.Categories on p.CategoryId equals category.Id
+                             where c.Id == cartId
+                             select category);
+
+                var result = await query.ToListAsync();
+                return result;
+            }
+
+        }
+
+
     }
 }
