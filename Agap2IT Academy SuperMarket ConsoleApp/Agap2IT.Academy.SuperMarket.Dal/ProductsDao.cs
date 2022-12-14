@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Agap2IT.Academy.SuperMarket.Dal
 {
-    public class ProductsDao
+    public class ProductsDao : BaseDao
     {
         public async Task<List<Product>> GetProductsByCategoryName(string category)
         {
-            using(var context = new AcademyAgap213122022Context())
+            using(var context = CreateContext())
             {
                 var result = await (from p in context.Products
                         join c in context.Categories on p.CategoryId equals c.Id
@@ -25,7 +25,7 @@ namespace Agap2IT.Academy.SuperMarket.Dal
 
         public async Task<List<Product>> GetProductsInClientShoppingCart(int clientId)
         {
-            using(var context = new AcademyAgap213122022Context())
+            using(var context = CreateContext())
             {
                 var query = (from client in context.Clients
                              join cart in context.Carts on client.Id equals cart.ClientId
@@ -45,5 +45,29 @@ namespace Agap2IT.Academy.SuperMarket.Dal
                 
             }
         }
+
+        public async Task<List<Category>> GetClientChosenCategories(int clientId)
+        {
+            using (var context = CreateContext())
+            {
+
+                context.ChangeTracker.AutoDetectChangesEnabled = false; 
+                
+                var query = (from client in context.Clients
+                             join cart in context.Carts on client.Id equals cart.ClientId
+                             join product in context.Products on cart.ProductId equals product.Id
+                             join category in context.Categories on product.CategoryId equals category.Id
+                             where client.Id == clientId
+                             select category);
+
+
+                var result = await query.ToListAsync();
+
+                return result;
+
+            }
+        }
+
+
     }
 }
