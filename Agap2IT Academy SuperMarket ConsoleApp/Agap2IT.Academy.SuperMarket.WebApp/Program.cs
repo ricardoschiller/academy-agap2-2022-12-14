@@ -1,7 +1,13 @@
+using Agap2IT.Academy.SuperMarket.Business;
+using Agap2IT.Academy.SuperMarket.Dal;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IClientsBO, ClientsBO>();
+builder.Services.AddScoped<IGenericDao, GenericDao>();
 
 var app = builder.Build();
 

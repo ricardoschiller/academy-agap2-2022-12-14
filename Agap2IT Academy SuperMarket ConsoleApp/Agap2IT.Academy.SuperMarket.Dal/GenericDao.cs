@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Agap2IT.Academy.SuperMarket.Dal
 {
-    public class GenericDao
+    public class GenericDao : IGenericDao
     {
         public async Task Add<T>(T entity) where T : class
         {
@@ -65,7 +65,7 @@ namespace Agap2IT.Academy.SuperMarket.Dal
             {
                 return await context.Set<T>().Where(i => i.Uuid == uuid).SingleOrDefaultAsync();
             }
-            
+
         }
 
 

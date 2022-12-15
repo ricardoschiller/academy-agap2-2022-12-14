@@ -1,4 +1,5 @@
 ﻿using Agap2IT.Academy.SuperMarket.Business;
+using Agap2IT.Academy.SuperMarket.Dal;
 using Agap2IT.Academy.SuperMarket.WebApp.Models;
 using Agap2IT.Academy.SuperMarket.WebApp.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace Agap2IT.Academy.SuperMarket.WebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var clientsBO = new ClientsBO();
+            var clientsBO = new ClientsBO(new GenericDao());
 
             var opResult = await clientsBO.GetAllClients();
 

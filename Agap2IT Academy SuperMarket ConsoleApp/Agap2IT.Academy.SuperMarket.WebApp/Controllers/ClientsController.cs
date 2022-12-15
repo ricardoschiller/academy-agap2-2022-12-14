@@ -10,13 +10,19 @@ namespace Agap2IT.Academy.SuperMarket.WebApp.Controllers
     [ApiController]
     public class ClientsController : ControllerBase
     {
+        private IClientsBO _clientsBO;
+        public ClientsController(IClientsBO clientsBO)
+        {
+            _clientsBO = clientsBO;
+        }
+
+        
         // GET: api/<ClientsController>
         [HttpGet("GetAllClients")]
         public async Task<List<Client>> GetAllClients()
         {
-            var clientsBO = new ClientsBO();
 
-            var opResult = await clientsBO.GetAllClients();
+            var opResult = await _clientsBO.GetAllClients();
 
             if (opResult.HasSucceeded)
             {
