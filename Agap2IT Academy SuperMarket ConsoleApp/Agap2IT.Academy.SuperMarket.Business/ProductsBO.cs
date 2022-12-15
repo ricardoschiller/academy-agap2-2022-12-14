@@ -4,7 +4,7 @@ using System.Transactions;
 
 namespace Agap2IT.Academy.SuperMarket.Business
 {
-    public class ProductsBO
+    public class ProductsBO : BaseBO
     {
         public async Task<OpResult> RegisterClientAndAddProductToCart(Client client, Cart cart, Guid productUuid)
         {
@@ -37,25 +37,14 @@ namespace Agap2IT.Academy.SuperMarket.Business
 
         public async Task<OpResult<Client>> GetClientAsync(Guid uuid)
         {
-            try
+            var opResult = await GetResult(async () =>
             {
-                var transactionOptions = new TransactionOptions();
-                transactionOptions.IsolationLevel = IsolationLevel.RepeatableRead;
-                transactionOptions.Timeout = TimeSpan.FromSeconds(30);
-                using (var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled))
-                {
-                    var dao = new GenericDao();
-                    var client = await dao.Get<Client>(uuid);
+                var dao = new GenericDao();
+                var result = await dao.Get<Client>(uuid);
+                return result;
+            });
 
-                    transactionScope.Complete();
-                    return new OpResult<Client>(client);
-                }
-            }
-            catch(Exception ex)
-            {
-                return new OpResult<Client>(ex);
-            }
-            
+            return opResult;
         }
     }
 }
