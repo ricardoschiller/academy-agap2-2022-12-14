@@ -1,4 +1,8 @@
-﻿@{
+﻿@using Agap2IT.Academy.SuperMarket.WebApp.ViewModels.Home;
+
+@model IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 
     var num  = 10;
@@ -9,8 +13,8 @@
 <div class="text-center">
     <h1 class="display-4">Olá Mundo</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    @for(int i = 0; i< num; i++)
+    @foreach(var item in Model.Clients)
     {
-        <p>Teste @i</p>
+        <p>@item.Name</p>
     }
 </div>

@@ -1,4 +1,6 @@
-﻿using Agap2IT.Academy.SuperMarket.WebApp.Models;
+﻿using Agap2IT.Academy.SuperMarket.Business;
+using Agap2IT.Academy.SuperMarket.WebApp.Models;
+using Agap2IT.Academy.SuperMarket.WebApp.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,11 +15,22 @@ namespace Agap2IT.Academy.SuperMarket.WebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var clientsBO = new ClientsBO();
+
+            var opResult = await clientsBO.GetAllClients();
+
+            if (opResult.HasSucceeded)
+            {
+                return View(new IndexViewModel { Clients = opResult.Result });
+            }
+            else
+            {
+                return View("Error");
+            }
             
             
-            return View();
         }
 
         public IActionResult Privacy()
