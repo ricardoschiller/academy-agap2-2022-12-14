@@ -15,7 +15,7 @@ namespace Agap2IT.Academy.SuperMarket.WebApp.Controllers
 
         public IActionResult Index()
         {
-            var 
+            
             
             return View();
         }
