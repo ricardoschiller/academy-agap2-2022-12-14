@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agap2IT.Academy.SuperMarket
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agap2IT.Academy.SuperMarket.Business", "Agap2IT.Academy.SuperMarket.Business\Agap2IT.Academy.SuperMarket.Business.csproj", "{09D4F6EB-5B3D-4BA3-85D0-C924C51AB035}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agap2IT.Academy.SuperMarket.WebApp", "Agap2IT.Academy.SuperMarket.WebApp\Agap2IT.Academy.SuperMarket.WebApp.csproj", "{D16AB602-593B-4D0A-AF71-3044302C5C96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{09D4F6EB-5B3D-4BA3-85D0-C924C51AB035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09D4F6EB-5B3D-4BA3-85D0-C924C51AB035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09D4F6EB-5B3D-4BA3-85D0-C924C51AB035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D16AB602-593B-4D0A-AF71-3044302C5C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16AB602-593B-4D0A-AF71-3044302C5C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16AB602-593B-4D0A-AF71-3044302C5C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16AB602-593B-4D0A-AF71-3044302C5C96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
