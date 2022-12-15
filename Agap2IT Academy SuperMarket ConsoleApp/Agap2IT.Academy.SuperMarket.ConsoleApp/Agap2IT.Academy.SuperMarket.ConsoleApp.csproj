@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Agap2IT.Academy.SuperMarket.Business\Agap2IT.Academy.SuperMarket.Business.csproj" />
     <ProjectReference Include="..\Agap2IT.Academy.SuperMarket.Dal\Agap2IT.Academy.SuperMarket.Dal.csproj" />
     <ProjectReference Include="..\Agap2IT.Academy.SuperMarket.Data\Agap2IT.Academy.SuperMarket.Data.csproj" />
   </ItemGroup>

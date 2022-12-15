@@ -2,14 +2,25 @@
 using Agap2IT.Academy.SuperMarket.Data.Models;
 using Microsoft.VisualBasic;
 using Agap2IT.Academy.SuperMarket.Dal;
+using Agap2IT.Academy.SuperMarket.Business;
 
 Console.WriteLine("Hello, World!");
 
 
+var bo = new ProductsBO();
 
-var productsDao = new ProductsDao();
+var opResult = await bo.GetClientAsync(Guid.Parse("873B0989-1E2F-4D11-BA6B-3857B3BCFCAE"));
 
-var results = productsDao.GetProductsInClientShoppingCart(1);
+if (opResult.HasSucceeded)
+{
+
+}
+else
+{
+
+}
+
+
 
 
 Console.ReadLine();
