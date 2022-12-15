@@ -1,4 +1,5 @@
 ﻿using Agap2IT.Academy.SuperMarket.Data.Models;
+using Agap2IT.Academy.SuperMarket.Data.Pocos.Products;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -85,6 +86,24 @@ namespace Agap2IT.Academy.SuperMarket.Dal
 
         }
 
+        public async Task<List<ProductsAndCategoriesPoco>> GetAllProductsAndTheirCategories()
+        {
+            using (var context = CreateContext())
+            {
+                var query = (from p in context.Products
+                             join c in context.Categories on p.CategoryId equals c.Id
+                             select new ProductsAndCategoriesPoco
+                             {
+                                 CategoryName = c.Name,
+                                 ProductName = p.Name,
+                                 ProductPrice = p.Price,
+                                 ProductUuid = p.Uuid
+                             });
 
+                var result = await query.ToListAsync();
+
+                return result;
+            }
+        }
     }
 }
